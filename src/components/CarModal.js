@@ -14,8 +14,8 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
             <Modal
                 show={show}
                 onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
+                //backdrop="static"
+                //keyboard={false}
                 centered
                 className='backdrop-blur-sm'
             >

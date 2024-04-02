@@ -28,6 +28,9 @@ export default function CarItem ({ car, user, setUser }){
         GetImage();
     })
 
+    const addCar = async() =>{
+        const response = await AddCarToUser(user, car)
+    }
 
     return(
         <>

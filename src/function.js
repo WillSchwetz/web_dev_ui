@@ -173,6 +173,28 @@ export async function LoginUser(username, password){
     }
 }
 
+export async function AddCarToUser(user, car){
+    const username = user.username;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify(car);
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+    };
+    try{
+        let response = await fetch(`http://localhost:3010/api/cars?username=${username}`, requestOptions)
+        if(response.ok){
+           console.log(response, "yay")
+           return true
+        } else return false;
+    } catch (error){
+        console.log(error);
+        return false;
+    }
+}
 
 export async function RegisterUser(username, password){
     const myHeaders = new Headers();

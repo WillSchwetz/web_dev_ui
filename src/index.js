@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import CarDisplay from "./pages/CarDisplay";
+import GarageDisplay from "./pages/GarageDisplay"
 import './styles.css'; // Import your styles
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/" element={<Layout user={user} setUser={setUser} />}>
           <Route index element={<Home user={user} />} />
           <Route path="cardisplay" element={<CarDisplay user={user} setUser={setUser} />} />
+          <Route path="garage" element={<GarageDisplay user={user} setUser={setUser}/>} />
         </Route>
       </Routes>
     </BrowserRouter>

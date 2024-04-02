@@ -72,16 +72,7 @@ export async function GetCarList(minYear, maxYear, driveTrain, transmission, mpg
                 + ` OR trany="Manual 5-spd")`
             break;
     }
-
-    
-
-
-    //console.log(paramString);
     const url = BASE_API + paramString
-    console.log(url)
-
-
-
     const carList = await CallExternalAPI(url);
     return carList;
 

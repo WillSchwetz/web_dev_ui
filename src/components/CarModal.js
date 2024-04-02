@@ -4,13 +4,13 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { XMarkIcon, WrenchIcon } from '@heroicons/react/24/solid';
+import { CardImage, CupStraw, HeartPulseFill } from 'react-bootstrap-icons';
 
-import { FuelPumpFill, GearFill, Signpost2Fill, CarFrontFill, CloudHaze2Fill  } from 'react-bootstrap-icons';
+import { FuelPumpFill, GearFill, CarFrontFill, CloudHaze2Fill } from 'react-bootstrap-icons';
 
 export default function CarModal({car, imgUrl, show, handleClose, user, setUser, attribution, setShow}) {
 
     return(
-        <>
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -22,7 +22,7 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
 
                 <Modal.Body>
                     <div className='flex flex-1 justify-end'>
-                        <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={() => setShow(() => false)}/>
+                        <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={handleClose} />
                     </div>
                     <div className='w-full'>
                         <div className='w-full items-center text-center mb-4 text-xl'>
@@ -79,8 +79,12 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                                 <div>{car.trany}</div>
                             </div>
                             <div className='flex'>
-                                <div className='px-2'><Signpost2Fill size={20}/></div>
-                                <div>Fuel type</div>
+                                <div className='px-2'><CupStraw size={20}/></div>
+                                <div>{`${car.displ} litres`}</div>
+                            </div>
+                            <div className='flex'>
+                                <div className='px-2'><HeartPulseFill size={20}/></div>
+                                <div>{car.cylinders} cylinders</div>
                             </div>
                             <div className='flex'>
                             <div className='px-2'><CloudHaze2Fill size={20}/></div>
@@ -88,7 +92,7 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                             </div>
                         </div>
                     </div>
-                
+                    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-danger" onClick={handleClose}>
@@ -96,6 +100,5 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
     )
 }

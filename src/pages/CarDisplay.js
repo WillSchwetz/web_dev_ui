@@ -26,7 +26,6 @@ export default function CarDisplay ({user, setUser}){
             const trans = searchParams.get('trans');
             const mpg = searchParams.get('mpg');
             const {results, total_count} = await GetCarList(minYear, maxYear, drivetrain, trans, mpg, page);
-            console.log("HERE")
             setCarList(() => results);
             setCount(() => total_count);
         }
@@ -42,7 +41,7 @@ export default function CarDisplay ({user, setUser}){
                 {(((page + 1) * 20) < count ) && <ChevronDoubleRightIcon onClick={() => {setPage(() => (page + 1))}} className="h-4 w-4 mx-1 hover:cursor-pointer hover:text-lime-300"/>}
             </div>
             <div style={{width:"100%", height:"95%", display:"flex", flexDirection:"row", flexWrap:"wrap", justifyContent:"space-between", alignContent:"flex-start", overflowY:"auto"}}>
-                {(carList.length > 0) ? carList?.map((car, index) => <CarItem key={index} car={car} user={user} setUser={setUser} />) : null}
+                {(carList.length > 0) ? carList?.map((car, index) => <CarItem key={`${index}_car.model`} car={car} user={user} setUser={setUser} />) : null}
             </div>
         </>
 

@@ -1,8 +1,10 @@
 import React, { useState, setState, useEffect } from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
-import { GetImageUrl } from '../function';
+import { GetImageUrl, AddCarToUser } from '../function';
 import Button from 'react-bootstrap/Button';
 import  CarModal  from './CarModal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function CarItem ({ car, user, setUser }){
 
     const [imgUrl, setImgUrl] = useState("");
@@ -27,9 +29,32 @@ export default function CarItem ({ car, user, setUser }){
     useEffect(() => {
         GetImage();
     })
-
+    const notify = () => {
+       
+        toast.success('Success!', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+           
+            });
+  
+        
+        };
+    
     const addCar = async() =>{
+      
         const response = await AddCarToUser(user, car)
+        if(response){
+           
+            
+        }
+        notify();
+        console.log(response);
     }
 
     return(
@@ -61,9 +86,10 @@ export default function CarItem ({ car, user, setUser }){
                             <div id="trim">{car.model}</div>
                         </div>
                         {user && <div style={{display:"flex", justifyContent:"end"}} id="plus"> 
-                            <button>
+                            <button onClick={addCar}>
                                 <PlusCircleIcon className="h-6 w-6 hover:text-lime-300" />
                             </button>
+                           
                         </div>}
                     </div>
                     <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
@@ -90,10 +116,12 @@ export default function CarItem ({ car, user, setUser }){
                             Details
                         </Button>
                     </div>
-   
+                    
                     <CarModal show={show} car={car} handleClose={handleClose} user={user} setUser={setUser} imgUrl={imgUrl} attribution={attribution} setShow={setShow} />
                 </div>
             </div>
+           
         </>
+        
     )
 }

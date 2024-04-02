@@ -29,7 +29,7 @@ export default function CarItem ({ car, user, setUser }){
 
 
     return(
-        <div className='border-2 mt-3 hover:bg-slate-100' style={{width:"500px", height:"150px", display:"flex", flexDirection:"row"}} onClick={handleShow}>
+        <div className='border-2 mt-3 hover:bg-slate-100 hover:cursor-pointer' style={{width:"500px", height:"150px", display:"flex", flexDirection:"row"}} onClick={handleShow}>
             <div className="px-1 py-1 h-full" style={{width:"50%"}}>
                 {(imgUrl) ?
                     <div className='relative h-full w-full rounded flex items-center bg-black'>

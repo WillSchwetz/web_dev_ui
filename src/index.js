@@ -7,18 +7,7 @@ import CarDisplay from "./pages/CarDisplay";
 import './styles.css'; // Import your styles
 
 export default function App() {
-  const [carXmlData, setCarXmlData] = useState("BEES")
   const [user, setUser] = useState();
-  // useEffect(() => {
-  //   fetch('../vehicles.xml')
-  //     .then(response => response.text())
-  //     .then(data => {
-  //       const parser = new DOMParser();
-  //       const xmlDoc = parser.parseFromString(data, "text/xml");
-  //       setCarXmlData(xmlDoc);
-  //     })
-  // }, [])
-
 
   return (
     <BrowserRouter>

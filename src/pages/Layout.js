@@ -7,7 +7,7 @@ const Layout = ({user, setUser}) => {
   return (
     <>
       {/* MAIN CONTAINER */}
-      <div className="drop-shadow-2xl border-2 border-solid border-slate-500" style={{width:"90%", height:"100%", "marginLeft":"auto", "marginRight":"auto", "marginTop":"50px", "marginBottom": "auto"}}>
+      <div className="drop-shadow-2xl border-2 border-solid border-slate-500 max-h-5/6" style={{width:"90%", "marginLeft":"auto", "marginRight":"auto", "marginTop":"50px", "marginBottom": "auto"}}>
           {/* TOP BAR */}
           <div>
               <Topbar user={user} setUser={setUser} />
@@ -20,7 +20,7 @@ const Layout = ({user, setUser}) => {
                   <TopContentBar/>
               </div>
               {/* MAIN CONTENT OUTLET */}
-              <div className="mx-5 h-[700px]">
+              <div className="mx-5 h-[900px]">
                   <Outlet />
               </div>
           </div>

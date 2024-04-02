@@ -1,16 +1,12 @@
 import Cookies from 'universal-cookie';
 
-//const BASE_API = 'https://www.fueleconomy.gov/ws/rest/'
 const BASE_API = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/all-vehicles-model/records?'
 
 const cookies = new Cookies();
 
 export async function GetCarList(minYear, maxYear, driveTrain, transmission, mpg, page){
-
-    //const idList = [];
     const limitVehicles = 20;
     var offset = (page * limitVehicles);
-    //var offset = 0;
 
     let paramString = `limit=${limitVehicles}`; // Set limit of returns
     paramString += `&offset=${offset}`; // Set offset for pagination
@@ -79,15 +75,10 @@ export async function GetCarList(minYear, maxYear, driveTrain, transmission, mpg
 }
 
 const CallExternalAPI = async (urlString) => {
-    //const url = `${BASE_API}${urlString}`;
     var list = [];
     list = await fetch(urlString)
         .then(response => response.json())
         .then(str => {
-            //const { results } = str;
-            //console.log(results.length)
-            //console.log(str);
-            //return tList;
             return str;
         })
         .catch(error => {

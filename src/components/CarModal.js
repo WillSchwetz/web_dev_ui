@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { XMarkIcon, WrenchIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, WrenchIcon, PlusCircleIcon } from '@heroicons/react/24/solid';
 import { CardImage, CupStraw, HeartPulseFill } from 'react-bootstrap-icons';
 
 import { FuelPumpFill, GearFill, CarFrontFill, CloudHaze2Fill } from 'react-bootstrap-icons';
@@ -20,13 +20,13 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                 className='backdrop-blur-sm'
             >
 
-                <Modal.Body>
+                <Modal.Body className='bg-gradient-to-b from-slate-300 to-white'>
                     <div className='flex flex-1 justify-end'>
                         <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={handleClose} />
                     </div>
                     <div className='w-full'>
                         <div className='w-full items-center text-center mb-4 text-xl'>
-                            <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
+                        <span>{car.year}</span> <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
                         </div>
                         <div className='w-full flex space-x-5'>
                             <div className='w-1/2'>
@@ -46,11 +46,11 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                             </div>
                             <div className='w-1/2'>
                                 <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
-                                    <div className='mr-1'>Avg. City:</div>
+                                    <div className='mr-1'>Average City:</div>
                                     <div className='mr-1'>{car.city08} mpg</div>
                                 </div>
                                 <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
-                                    <div className='mr-1'>Avg. Highway:</div>
+                                    <div className='mr-1'>Average Highway:</div>
                                     <div className='mr-1'>{car.highway08} mpg</div>
                                 </div>
                                 <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
@@ -58,7 +58,7 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                                     <div className='mr-1'>{`${car.comb08}`} mpg</div>
                                 </div>
                                 <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
-                                    <div className='mr-1'>Average savings:</div>
+                                    <div className='mr-1'>Average fuel savings:</div>
                                     <div className='mr-1'>{`$${car.yousavespend}`}</div>
                                 </div>
                             </div>
@@ -97,6 +97,9 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                 <Modal.Footer>
                     <Button variant="outline-danger" onClick={handleClose}>
                         Exit
+                    </Button>
+                    <Button variant="outline-info" className='hover:text-white'>
+                        Add to garage
                     </Button>
                 </Modal.Footer>
             </Modal>

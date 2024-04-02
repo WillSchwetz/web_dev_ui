@@ -14,13 +14,13 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
             <Modal
                 show={show}
                 onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
+                //backdrop="static"
+                //keyboard={false}
                 centered
                 className='backdrop-blur-sm'
             >
 
-                <Modal.Body className='bg-gradient-to-b from-slate-300 to-white'>
+                <Modal.Body className='bg-gradient-to-b from-lime-200 to-white'>
                     <div className='flex flex-1 justify-end'>
                         <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={handleClose} />
                     </div>

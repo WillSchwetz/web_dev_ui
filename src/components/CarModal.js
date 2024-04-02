@@ -20,13 +20,13 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                 className='backdrop-blur-sm'
             >
 
-                <Modal.Body className='bg-gradient-to-b from-lime-200 to-white'>
+                <Modal.Body style={{"font-family": `Helvetica, Arial, sans-serif`}} className='bg-gradient-to-b from-zinc-200 to-white text-neutral-500'>
                     <div className='flex flex-1 justify-end'>
                         <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={handleClose} />
                     </div>
                     <div className='w-full'>
-                        <div className='w-full items-center text-center mb-4 text-xl'>
-                        <span>{car.year}</span> <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
+                        <div style={{"font-family": `Tahoma, "Trebuchet MS", sans-serif`}} className='w-full items-center text-center mb-4 text-xl'>
+                            <span>{car.year}</span> <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
                         </div>
                         <div className='w-full flex space-x-5'>
                             <div className='w-1/2'>

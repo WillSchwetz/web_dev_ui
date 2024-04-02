@@ -80,7 +80,7 @@ export default function CarItem ({ car, user, setUser }){
                     <div className='mr-1'>{`$${car.yousavespend}`}</div>
                 </div>
 
-                <CarModal show={show} car={car} handleClose={handleClose} user={user} setUser={setUser} attribution={attribution} setShow={setShow} />
+                <CarModal show={show} car={car} handleClose={handleClose} user={user} setUser={setUser} imgUrl={imgUrl} attribution={attribution} setShow={setShow} />
             </div>
         </div>
     )

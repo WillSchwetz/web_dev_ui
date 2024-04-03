@@ -24,15 +24,12 @@ export default function Signup({show, handleClose, setUser}){
         } else if(!(password?.length > 0)){
             setError("Password cannot be blank");
         } else {
-            //console.log("Pre-register")
             const response = await RegisterUser(username, password);
             if (!response){
                 setError("Unsuccessful Registration");
             } else {
                 setUser(response)
             }
-            // redirect here 
-            //console.log("Post register")
         }
 
         

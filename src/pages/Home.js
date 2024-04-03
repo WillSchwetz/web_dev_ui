@@ -1,6 +1,6 @@
 const Home = ({user}) => {
     return (
-        <div style={{height:"100%", width:"100%"}}>
+        <div className="h-full flex-1" >
             <div className='items-center justify-items-center' style={{display:"flex", height:"100%", width:"100%", justifyContent:"space-around"}}>
                 <span className='ml-3 font-sans text-2xl'>
                     {user ? 

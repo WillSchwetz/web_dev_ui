@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-// #class TopContentBar extends React.Component{
 export default function TopContentBar(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -37,17 +36,16 @@ export default function TopContentBar(){
                 </div>
             </div>
             <ToastContainer
-            position="bottom-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
             />
         </>
     )

@@ -1,32 +1,34 @@
 import React, { useState, setState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { XMarkIcon, WrenchIcon, PlusCircleIcon } from '@heroicons/react/24/solid';
 import { CardImage, CupStraw, HeartPulseFill } from 'react-bootstrap-icons';
 
+
 import { FuelPumpFill, GearFill, CarFrontFill, CloudHaze2Fill } from 'react-bootstrap-icons';
 
 export default function CarModal({car, imgUrl, show, handleClose, user, setUser, attribution, setShow}) {
-
+    const dispStrings = ["Engine Displacement", "I didn't know pizza places sold engines"]
     return(
             <Modal
                 show={show}
                 onHide={handleClose}
-                //backdrop="static"
-                //keyboard={false}
+                backdrop="static"
+                keyboard={false}
                 centered
                 className='backdrop-blur-sm'
             >
 
-                <Modal.Body className='bg-gradient-to-b from-lime-200 to-white'>
+                <Modal.Body style={{"font-family": `Helvetica, Arial, sans-serif`}} className='bg-gradient-to-b from-zinc-200 to-white text-neutral-500'>
                     <div className='flex flex-1 justify-end'>
                         <XMarkIcon className='h-6 w-6 hover:cursor-pointer hover:text-red-400' onClick={handleClose} />
                     </div>
                     <div className='w-full'>
-                        <div className='w-full items-center text-center mb-4 text-xl'>
-                        <span>{car.year}</span> <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
+                        <div style={{"font-family": `Tahoma, "Trebuchet MS", sans-serif`}} className='w-full items-center text-center mb-4 text-xl'>
+                            <span>{car.year}</span> <span>{car.make}</span> <span className='font-semibold	'>{car.model}</span>
                         </div>
                         <div className='w-full flex space-x-5'>
                             <div className='w-1/2'>
@@ -67,28 +69,70 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                         <div className='h-8'></div>
                         <div className='flex flex-wrap justify-between'>
                             <div className='flex'>
-                                <div className='px-2'><FuelPumpFill size={20}/></div>
+                                <div className='px-2'>
+                                    <OverlayTrigger
+                                        placement="top"
+                                        overlay={<Tooltip id="icon-tooltip-1">Fuel Type</Tooltip>}
+                                    >
+                                        <FuelPumpFill size={20}/>
+                                    </OverlayTrigger>
+                                </div>
                                 <div>{car.fueltype}</div>
                             </div>
                             <div className='flex'>
-                                <div className='px-2'><CarFrontFill size={20}/></div>
+                                <div className='px-2'>
+                                    <OverlayTrigger
+                                        placement="top"
+                                        overlay={<Tooltip id="icon-tooltip-2">Drivetrain</Tooltip>}
+                                    >
+                                        <CarFrontFill size={20}/>
+                                    </OverlayTrigger>
+                                </div>
                                 <div>{car.drive}</div>
                             </div>
                             <div className='flex'>
-                                <div className='px-2'><GearFill size={20}/></div>
+                                <div className='px-2'>
+                                    <OverlayTrigger
+                                        placement="top"
+                                        overlay={<Tooltip id="icon-tooltip-3">Transmission</Tooltip>}
+                                    >
+                                        <GearFill size={20}/>
+                                    </OverlayTrigger>
+                                </div>
                                 <div>{car.trany}</div>
                             </div>
                             <div className='flex'>
-                                <div className='px-2'><CupStraw size={20}/></div>
+                                <div className='px-2'>
+                                    <OverlayTrigger
+                                        placement="bottom"
+                                        overlay={<Tooltip id="icon-tooltip-4">{dispStrings[(Math.random() * 10) < 8 ? 0 : 1]}</Tooltip>}
+                                    >
+                                        <CupStraw size={20}/>
+                                    </OverlayTrigger>
+                                </div>
                                 <div>{`${car.displ} litres`}</div>
                             </div>
                             <div className='flex'>
-                                <div className='px-2'><HeartPulseFill size={20}/></div>
+                                <div className='px-2'>
+                                    <OverlayTrigger
+                                        placement="bottom"
+                                        overlay={<Tooltip id="icon-tooltip-5">Number of Cylinders</Tooltip>}
+                                    >
+                                        <HeartPulseFill size={20}/>
+                                    </OverlayTrigger>
+                                </div>
                                 <div>{car.cylinders} cylinders</div>
                             </div>
                             <div className='flex'>
-                            <div className='px-2'><CloudHaze2Fill size={20}/></div>
-                                <div>{(car.tcharger === null && car.scharger === null)  ? 'Naturally Aspirated' : car.tcharger === null? 'Superchargerd' : 'Turbocharged'}</div>
+                            <div className='px-2'>
+                                <OverlayTrigger
+                                    placement="bottom"
+                                    overlay={<Tooltip id="icon-tooltip-6">Air Induction System</Tooltip>}
+                                >
+                                    <CloudHaze2Fill size={20}/>
+                                </OverlayTrigger>
+                            </div>
+                            <div>{(car.tcharger === null && car.scharger === null)  ? 'Naturally Aspirated' : car.tcharger === null? 'Superchargerd' : 'Turbocharged'}</div>
                             </div>
                         </div>
                     </div>

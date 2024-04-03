@@ -167,9 +167,10 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                     <Button variant="outline-danger" onClick={handleClose} >
                         Exit
                     </Button>
-                    <Button variant="outline-info" className='hover:text-white' onClick={addCar} hidden={location.pathname==="/garage"}>
+                    {location.pathname=="/garage" && user ? null:(<Button variant="outline-info" className='hover:text-white' onClick={addCar} >
                         Add to garage
-                    </Button>
+                    </Button>)}
+                    
                 </Modal.Footer>
             </Modal>
     )

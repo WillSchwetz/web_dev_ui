@@ -7,24 +7,30 @@ const Layout = ({user, setUser}) => {
   return (
     <>
       {/* MAIN CONTAINER */}
-      <div className="drop-shadow-2xl border-2 border-solid border-slate-500 max-h-5/6" style={{width:"90%", "marginLeft":"auto", "marginRight":"auto", "marginTop":"50px", "marginBottom": "auto"}}>
-          {/* TOP BAR */}
-          <div>
-              <Topbar user={user} setUser={setUser} />
-          </div>
+      {/* style={{width:"90%", "marginLeft":"auto", "marginRight":"auto", "marginTop":"50px", "marginBottom": "50px"}} */}
+      {/* h-full mx-24 pb-4 h-dvh */}
+      <div className="w-full h-screen max-h-full py-16 px-16">
+        <div className="drop-shadow-2xl border-2 border-solid border-slate-500 mx-auto w-full h-full" >
+            {/* TOP BAR */}
+            <div className="h-[50px]">
+                <Topbar user={user} setUser={setUser} />
+            </div>
 
-          {/* LOWER SECTION */}
-          <div className="h-auto" style={{background:"white"}}>
-              {/* TOP PART WITH TEXT AND GARAGE BUTTON */}
-              <div>
-                  <TopContentBar/>
-              </div>
-              {/* MAIN CONTENT OUTLET */}
-              <div className="mx-5 h-[900px]">
-                  <Outlet />
-              </div>
-          </div>
+            {/* LOWER SECTION */}
+            <div className="flex flex-col" style={{background:"white", height: "calc(100% - 50px)"}}>
+                {/* TOP PART WITH TEXT AND GARAGE BUTTON */}
+                <div className="">
+                    <TopContentBar/>
+                </div>
+                {/* MAIN CONTENT OUTLET */}
+                <div className="mx-5 overflow-y-hidden h-full">
+                    <Outlet />
+                </div>
+            </div>
+        </div>
+
       </div>
+     
     </>
   )
 };

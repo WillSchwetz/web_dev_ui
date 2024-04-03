@@ -9,7 +9,7 @@ import './styles.css'; // Import your styles
 
 export default function App() {
   const [user, setUser] = useState();
-
+  
   return (
     <BrowserRouter>
       <Routes>

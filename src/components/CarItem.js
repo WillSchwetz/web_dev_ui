@@ -1,18 +1,21 @@
 import React, { useState, setState, useEffect } from 'react';
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
-import { GetImageUrl, AddCarToUser } from '../function';
+import { PlusCircleIcon, MinusCircleIcon } from '@heroicons/react/24/solid';
+import { GetImageUrl, AddCarToUser, DeleteCarById } from '../function';
 import Button from 'react-bootstrap/Button';
 import  CarModal  from './CarModal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-export default function CarItem ({ car, user, setUser }){
+import { useLocation } from 'react-router-dom';
+
+export default function CarItem ({ car, user, setUser, deleteCar  }){
 
     const [imgUrl, setImgUrl] = useState("");
     const [attribution, setAttribution] = useState("");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const location = useLocation();
+    
 
     const GetImage = async () => {
         const response = await GetImageUrl(car.year, car.make, car.basemodel);
@@ -29,9 +32,8 @@ export default function CarItem ({ car, user, setUser }){
     useEffect(() => {
         GetImage();
     })
-    const notify = () => {
-       
-        toast.success('Success!', {
+    const notify = () => {       
+        toast.success('Added Successfully!', {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -42,19 +44,13 @@ export default function CarItem ({ car, user, setUser }){
             theme: "dark",
            
             });
-  
-        
         };
     
-    const addCar = async() =>{
-      
+    const addCar = async() =>{      
         const response = await AddCarToUser(user, car)
         if(response){
-           
-            
+            notify();  
         }
-        notify();
-        console.log(response);
     }
 
     return(
@@ -84,13 +80,22 @@ export default function CarItem ({ car, user, setUser }){
                             <div id="make" className='mr-1'>{car.year}</div>
                             <div id="make" className='mr-1'>{car.make}</div>
                             <div id="trim">{car.model}</div>
-                        </div>
-                        {user && <div style={{display:"flex", justifyContent:"end"}} id="plus"> 
-                            <button onClick={addCar}>
-                                <PlusCircleIcon className="h-6 w-6 hover:text-lime-300" />
-                            </button>
-                           
-                        </div>}
+                        </div>                        
+                        {location.pathname=="/garage" && user ?(
+                            <div style={{display:"flex", justifyContent:"end"}} id="plus"> 
+                                <button onClick={()=>deleteCar(car)}>
+                                    <MinusCircleIcon className="h-6 w-6 hover:text-lime-300" />
+                                </button>
+                            </div>
+                        ) : user ? (
+                            <div style={{display:"flex", justifyContent:"end"}} id="plus"> 
+                                <button onClick={addCar}>
+                                    <PlusCircleIcon className="h-6 w-6 hover:text-lime-300" />
+                                </button>
+                            
+                            </div>
+                        ) : null}
+                                                
                     </div>
                     <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"end"}}>
                         <div className='mr-1'>Average City:</div>

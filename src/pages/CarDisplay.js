@@ -41,7 +41,11 @@ export default function CarDisplay ({user, setUser}){
                 <ChevronDoubleRightIcon onClick={() =>(((page + 1) * 20) < count ) && setPage((page + 1))} className={`h-4 w-4 mx-1 ${(((page + 1) * 20) < count ) ? 'hover:cursor-pointer hover:text-lime-600' : 'text-gray-300/50 ' }`} />
             </div>
             <div className='flex overflow-y-auto w-full flex-row flex-wrap justify-between' style={{background:"white", height: "calc(100% - 30px)"}}>
-                {(carList.length > 0) ? carList?.map((car, index) => <CarItem key={`${index}_car.model`} car={car} user={user} setUser={setUser} />) : null}
+            {carList && carList.length > 0 ? (
+                carList.map((car, index) => <CarItem key={`${index}_car.model`} car={car} user={user} setUser={setUser} />)
+            ) : (
+                <div>Loading...</div>
+            )}
             </div>
         </>
 

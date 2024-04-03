@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-// #class TopContentBar extends React.Component{
 export default function TopContentBar(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);

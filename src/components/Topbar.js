@@ -56,7 +56,6 @@ export default function TopBar({user, setUser}){
     useEffect(() => {
         GetAllYears();
 
-        //console.log(yearList[1])
     }, [])
 
     useEffect(() => {
@@ -67,7 +66,7 @@ export default function TopBar({user, setUser}){
         if(driveTrain != "" && driveTrain != null) tmpUrl = tmpUrl.concat('drivetrain=' + driveTrain  + "&");
         if(trans != "" && trans != null) tmpUrl = tmpUrl.concat('trans=' + trans) + "&";
         tmpUrl = tmpUrl.slice(0, -1)
-        if(searchURL != tmpUrl) setSearchURL(tmpUrl) //this.setState({searchURL: tmpUrl});
+        if(searchURL != tmpUrl) setSearchURL(tmpUrl)
     }, [mpg, minYear, maxYear, driveTrain, trans])
 
 

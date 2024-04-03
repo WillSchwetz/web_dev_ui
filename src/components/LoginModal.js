@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { LoginUser } from '../function'
+import { toast } from 'react-toastify';
 
 export default function Login({show, handleClose, setUser}){
     const [username, setUsername] = useState("");
@@ -12,10 +13,28 @@ export default function Login({show, handleClose, setUser}){
     
     const handleLogin = async () => {
         const response = await LoginUser(username, password);
-        setUser(response);
+        if(response){
+            setUser(response);
+        }
+        else{
+            notify()
+        }
+        
         handleClose();
     }
-
+    const notify = () => { 
+    toast.error('Error Logging In...', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        
+        });
+    }
 
     return (
         <Modal

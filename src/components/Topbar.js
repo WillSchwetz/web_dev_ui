@@ -19,9 +19,9 @@ export default function TopBar({user, setUser}){
     const handleShow = () => setShow(true);
 
     const handleLogout = () => {
-        console.log("here")
         LogoutUser();
         setUser(null);
+        window.location.href = '/';
         handleClose();
     }
 

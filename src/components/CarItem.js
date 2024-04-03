@@ -33,7 +33,7 @@ export default function CarItem ({ car, user, setUser, deleteCar  }){
         GetImage();
     })
     const notify = () => {       
-        toast.success('Success!', {
+        toast.success('Added Successfully!', {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -52,14 +52,6 @@ export default function CarItem ({ car, user, setUser, deleteCar  }){
             notify();  
         }
     }
-
-    // const deleteCar = async() =>{
-    //     console.log(car._id);
-    //     const resp = DeleteCarById(user, car._id)
-    //     if(resp){
-    //         notify();
-    //     }
-    // }
 
     return(
         <>

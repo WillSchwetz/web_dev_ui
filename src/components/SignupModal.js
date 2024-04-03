@@ -15,24 +15,26 @@ export default function Signup({show, handleClose, setUser}){
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const handleShow = () => setLoginShow(true);
+    const [isValid, setIsValid] = useState(true);
     
     const handleSignUp = async (event) => {
         event.preventDefault();
 
         if(!(username?.length > 0)){
             setError("Username cannot be blank");
+            setIsValid(false);
         } else if(!(password?.length > 0)){
+            setIsValid(false);
             setError("Password cannot be blank");
         } else {
+            //setIsValid(true);
             const response = await RegisterUser(username, password);
             if (!response){
                 setError("Unsuccessful Registration");
             } else {
                 setUser(response)
             }
-        }
-
-        
+        }        
     }
 
     return (
@@ -52,11 +54,11 @@ export default function Signup({show, handleClose, setUser}){
                     <Form noValidate>
                         <Form.Group className="mb-3" controlId="formGroupEmail">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                            <Form.Control type="text" placeholder="Enter username" className={isValid ? '': 'is-invalid'} value={username} onChange={(e) => setUsername(e.target.value)} required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formGroupPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                            <Form.Control type="password" placeholder="Password" className={isValid ? '': 'is-invalid'} value={password} onChange={(e) => setPassword(e.target.value)} required/>
                         </Form.Group>
                         <Button type='submit' variant="outline-secondary" onClick={(e) => handleSignUp(e)}>
                             Register

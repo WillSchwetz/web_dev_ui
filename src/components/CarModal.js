@@ -6,12 +6,37 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { XMarkIcon, WrenchIcon, PlusCircleIcon } from '@heroicons/react/24/solid';
 import { CardImage, CupStraw, HeartPulseFill } from 'react-bootstrap-icons';
-
+import {  AddCarToUser } from '../function';
+import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
 import { FuelPumpFill, GearFill, CarFrontFill, CloudHaze2Fill } from 'react-bootstrap-icons';
 
 export default function CarModal({car, imgUrl, show, handleClose, user, setUser, attribution, setShow}) {
     const dispStrings = ["Engine Displacement", "I didn't know pizza places sold engines"]
+
+    const location = useLocation();
+    
+    const addCar = async() =>{      
+        const response = await AddCarToUser(user, car)
+        if(response){
+            notify();  
+            setShow(false);
+        }
+    }
+    const notify = () => {       
+        toast.success('Added Successfully!', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+           
+            });
+        };
     return(
             <Modal
                 show={show}
@@ -139,10 +164,10 @@ export default function CarModal({car, imgUrl, show, handleClose, user, setUser,
                     
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-danger" onClick={handleClose}>
+                    <Button variant="outline-danger" onClick={handleClose} >
                         Exit
                     </Button>
-                    <Button variant="outline-info" className='hover:text-white'>
+                    <Button variant="outline-info" className='hover:text-white' onClick={addCar} hidden={location.pathname==="/garage"}>
                         Add to garage
                     </Button>
                 </Modal.Footer>

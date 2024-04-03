@@ -209,7 +209,7 @@ export async function GetUsersCars(user){
         let response = await fetch(`http://localhost:3010/api/cars?username=${user}`, requestOptions)
         if(response.ok){
            const cars = await response.json();
-            console.log(cars.cars)
+           console.log(cars.cars);
            return cars.cars
         } else return false;
     } catch (error){
@@ -217,6 +217,36 @@ export async function GetUsersCars(user){
         return false;
     }
 }
+
+export async function DeleteCarById(user, id){
+    
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify({
+        "id": id
+    });
+    const requestOptions = {
+        method: "DELETE",
+        headers: myHeaders,   
+        body: raw
+    };
+
+    try{
+        let response = await fetch(`http://localhost:3010/api/cars?username=${user}`, requestOptions)
+        if(response.ok){
+           const resp = await response.json();
+           if(resp.ok){
+            console.log(resp);
+            return true
+           }
+      
+        } else return false;
+    } catch (error){
+        console.log(error);
+        return false;
+    }
+}
+
 
 
 export async function RegisterUser(username, password){

@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import Topbar from '../components/Topbar'
 import TopContentBar from '../components/TopContentBar'
 
-const Layout = ({user, setUser}) => {
+const Layout = ({user, setUser, setGarageIsVisible}) => {
     
   return (
     <>
